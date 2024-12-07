@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Trigger build-and-push-image workflow in module04 repository
-        uses: peter-evans/workflow-dispatch@v1
+        uses: peter-evans/repository-dispatch@v3
         with:
           repository: 'akhilsingh-git/GitOps/module04/argocd_gitops/.github/workflows/build-and-push-image.yml'  # Specify the module04 repository
           workflow: '.module04/argocd_gitops/github/workflows/build-and-push-image.yml'  # Path to the workflow inside the module04 repository
