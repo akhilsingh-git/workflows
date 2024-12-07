@@ -1,0 +1,25 @@
+name: Trigger Build and Push Image for Module 04
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'release'
+    paths:
+      - 'module04/argocd_gitops/**'
+  workflow_dispatch:  # Allows manual triggering from the UI or other workflow
+
+jobs:
+  trigger-build-push-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Trigger build-and-push-image workflow in module04 repository
+        uses: peter-evans/workflow-dispatch@v1
+        with:
+          repository: 'akhilsingh-git/GitOps/module04/argocd_gitops/.github/workflows/build-and-push-image.yml'  # Specify the module04 repository
+          workflow: '.module04/argocd_gitops/github/workflows/build-and-push-image.yml'  # Path to the workflow inside the module04 repository
+          ref: 'refs/heads/main'  # Specify the branch to trigger on (or specify a commit SHA)
+          token: ${{ secrets.GITHUB_TOKEN }}  # Ensure GITHUB_TOKEN has permission to trigger workflows in module04 repo
