@@ -22,4 +22,4 @@ jobs:
           repository: 'akhilsingh-git/GitOps/module04/argocd_gitops/.github/workflows/build-and-push-image.yml'  # Specify the module04 repository
           workflow: '.module04/argocd_gitops/github/workflows/build-and-push-image.yml'  # Path to the workflow inside the module04 repository
           ref: 'refs/heads/main'  # Specify the branch to trigger on (or specify a commit SHA)
-          token: ${{ secrets.GITHUB_TOKEN }}  # Ensure GITHUB_TOKEN has permission to trigger workflows in module04 repo
+          token: ${{ secrets.GH_TOKEN }}  # Ensure GITHUB_TOKEN has permission to trigger workflows in module04 repo
